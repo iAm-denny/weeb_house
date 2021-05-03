@@ -1,8 +1,13 @@
 import React from "react";
 import Image from "next/image";
 import Link from "next/link";
+import { useMediaQuery } from "react-responsive";
 
 function Librray() {
+  const mobileView = useMediaQuery({
+    query: "(max-device-width: 768px)",
+  });
+
   return (
     <div className="container pt-24 pb-14 bg-secondary">
       <div>
@@ -24,22 +29,46 @@ function Librray() {
                   className="object-cover w-full rounded-l-3xl"
                 />
 
-                <div className="absolute right-0 bottom-1">
+                <div
+                  className={
+                    mobileView
+                      ? "absolute bottom-0 right-0 "
+                      : "absolute bottom-0 -right-8 "
+                  }
+                >
                   {index % 2 == 0 ? (
-                    <Image src="/images/test4.png" width={100} height={100} />
+                    <Image
+                      src="/images/test4.png"
+                      width={mobileView ? 40 : 100}
+                      height={mobileView ? 40 : 100}
+                    />
                   ) : (
-                    <Image src="/images/test2.png" width={100} height={100} />
+                    <Image
+                      src="/images/test2.png"
+                      width={mobileView ? 40 : 100}
+                      height={mobileView ? 40 : 100}
+                    />
                   )}
                 </div>
               </div>
               <div className="items-center w-56 pt-3 pl-2 mt-3 text-white rounded-r-3xl max-h-56 bg-primary">
-                <div className="font-bold text-md">demon slayer </div>
-                <div className="mt-1 text-sm font-light">
-                  Episode 24 - Completed
+                <div className="font-bold text-md">
+                  demon slayer <br />
+                  <span className="mt-1 text-sm font-light">
+                    Episode 24 - Completed
+                  </span>{" "}
                 </div>
-                <div className="mt-12 text-sm font-light">
-                  Action, Adventure, Demons, Comedy
-                </div>
+
+                <br />
+                {mobileView ? (
+                  <div className="-mt-3 text-sm font-light">
+                    Action, Adventure, Demons, Comedy
+                  </div>
+                ) : (
+                  <div className="mt-5 text-sm font-light">
+                    Action, Adventure, Demons, Comedy
+                  </div>
+                )}
               </div>
             </div>
           </Link>
