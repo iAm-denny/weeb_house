@@ -12,6 +12,7 @@ module.exports = {
       colors: {
         primary: "#D84339",
         secondary: "#373234",
+        dark: "#3C3D3F",
       },
       fontFamily: {
         body: ["Raleway"],
